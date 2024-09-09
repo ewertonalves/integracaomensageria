@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s # Intervalo padrão de coleta de métricas
+
+scrape_configs:
+  - job_name: 'spring-boot-app' # Nome da tarefa de coleta
+    scrape_interval: 10s # Intervalo específico para essa aplicação
+
+    static_configs:
+      - targets: ['localhost:8080'] # URL onde sua aplicação Spring Boot está rodando
