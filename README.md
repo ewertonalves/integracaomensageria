@@ -92,7 +92,6 @@ As principais configurações estão definidas no arquivo de propriedades da apl
 
 properties
 
-Copiar código
 
     teste.keykey=algumasecretachave
     jwt.expiracao=3600
@@ -101,7 +100,6 @@ Copiar código
 
 properties
 
-Copiar código
 
     spring.h2.console.enabled=true
     spring.datasource.url=jdbc:h2:mem:testdb
@@ -110,7 +108,6 @@ Copiar código
 
 properties
 
-Copiar código
 
     spring.rabbitmq.host=localhost
     spring.rabbitmq.port=5672
@@ -121,8 +118,6 @@ Copiar código
 **Configurações de Prometheus para Monitoramento**:
 
 properties
-
-Copiar código
 
     management.endpoints.web.exposure.include=health,info,metrics,prometheus
     management.metrics.export.prometheus.enabled=true
