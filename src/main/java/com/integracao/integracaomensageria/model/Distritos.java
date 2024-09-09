@@ -9,6 +9,10 @@ public class Distritos {
 	public Distritos() {
 	}
 
+	public Distritos(long l, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}
