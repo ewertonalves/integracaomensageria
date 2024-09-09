@@ -92,6 +92,7 @@ As principais configurações estão definidas no arquivo de propriedades da apl
 
 properties
 
+Copiar código
 
     teste.keykey=algumasecretachave
     jwt.expiracao=3600
@@ -100,6 +101,7 @@ properties
 
 properties
 
+Copiar código
 
     spring.h2.console.enabled=true
     spring.datasource.url=jdbc:h2:mem:testdb
@@ -108,6 +110,7 @@ properties
 
 properties
 
+Copiar código
 
     spring.rabbitmq.host=localhost
     spring.rabbitmq.port=5672
@@ -119,9 +122,28 @@ properties
 
 properties
 
+Copiar código
+
     management.endpoints.web.exposure.include=health,info,metrics,prometheus
     management.metrics.export.prometheus.enabled=true
     management.endpoint.prometheus.path=/actuator/prometheus
+
+
+### Configuração do Prometheus
+
+Para configurar o Prometheus para coletar métricas da aplicação, adicione o seguinte bloco ao seu arquivo de configuração do Prometheus (`prometheus.yml`):
+
+yaml
+
+    `global:
+      scrape_interval: 15s # Intervalo padrão de coleta de métricas
+    
+    scrape_configs:
+      - job_name: 'spring-boot-app' # Nome da tarefa de coleta
+        scrape_interval: 10s # Intervalo específico para essa aplicação
+    
+        static_configs:
+          - targets: ['localhost:8080'] # URL onde sua aplicação Spring Boot está rodando`
 
 ## **Como Executar o Projeto**
 
@@ -136,8 +158,7 @@ properties
 * Clone o repositório:
 * bash
 
- Copiar código
-`git clone https://github.com/seu-usuario/integracaomensageria.git`
+    ```git clone https://github.com/seu-usuario/integracaomensageria.git```
 
   
 
@@ -145,18 +166,15 @@ properties
 
 bash
 
-Copiar código
-`cd integracaomensageria`
+    cd integracaomensageria
 
 2. Compile e rode a aplicação:
 
 bash
 
-Copiar código
+    mvn clean install
 
-`mvn clean install`
-
-`mvn spring-boot:run`
+    mvn spring-boot:run
 
 O Spring Batch será iniciado automaticamente e os dados serão enviados para a fila RabbitMQ.
 
@@ -166,7 +184,7 @@ O banco de dados H2 está disponível em:
 bash
 Copiar código
 
-`http://localhost:8080/h2-console`
+    http://localhost:8080/h2-console
 
 Utilize as seguintes credenciais:
 
@@ -182,5 +200,6 @@ Utilize as seguintes credenciais:
 As métricas Prometheus estão disponíveis em:
 
 bash
-Copiar código
-`http://localhost:8080/actuator/prometheus`
+
+    http://localhost:8080/actuator/prometheus
+
